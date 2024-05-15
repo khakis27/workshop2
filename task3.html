@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kaomoji Tastiera</title>
+  <link rel="stylesheet" href="task3style.css">
+</head>
+<body>
+  <div class="burger-menu" onclick="toggleOverlay()">
+    <div class="burger"></div>
+    <div class="burger"></div>
+    <div class="burger"></div>
+  </div>
+
+  <!-- Aggiungi l'overlay -->
+  <div id="overlay">
+    <div class="overlay-content">
+      <a href="index.html">task1</a>
+        <a href="task2.html">task2</a>
+        <a href="task3.html">task3</a>
+    </div>
+  </div>
+
+  <div class="container">
+    <div id="kaomoji">(o ω o)</div>
+    <p>Konichiwa</p>
+  </div>
+
+  <audio autoplay loop>
+    <source src="assets/song.mp3" type="audio/mpeg">
+    Il tuo browser non supporta l'elemento audio.
+  </audio>
+  <script src="task3script.js"></script>
+</body>
+</html>

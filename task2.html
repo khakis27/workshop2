@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Article: scroll horizontally with mouse wheel</title>
+    <link rel="stylesheet" href="./style.css" />
+    <style>
+      html,
+      body {
+        margin: 0;
+        font-family: sans-serif;
+        background-color: black;
+      }
+
+      /* Stile per il menu burger */
+      .burger-menu {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        z-index: 9999;
+      }
+
+      .burger {
+        width: 100%;
+        height: 3px;
+        background-color: white;
+        margin: 5px 0;
+      }
+
+      /* Stile per l'overlay */
+      #overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9998;
+      }
+
+      .overlay-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+      }
+
+      .overlay-content a {
+        display: block;
+        margin-bottom: 20px;
+        font-size: 20px;
+        text-decoration: none;
+        color: white;
+      }
+
+      main {
+        overflow-x: hidden;
+        display: flex;
+      }
+
+      .title {
+        margin-top: 20px; /* spazio superiore per separare il titolo dalle immagini */
+        font-size: 2em; /* dimensione del titolo */
+        color: white;
+        position: fixed;
+      }
+
+      .image-section {
+        max-width: 200%;
+        max-height: 200%;
+        height: 400px; /* nuova altezza delle immagini */
+        align-items: center;
+        font-size: 4ch;
+        position: relative;
+        margin-top: 200px;
+      }
+
+      .image-section img {
+        max-width: 100vw; /* Larghezza massima pari alla larghezza della finestra del browser */
+        max-height: 100vh; /* Altezza massima pari all'altezza della finestra del browser */
+        width: auto;
+        height: auto;
+        transition: filter 0.3s; /* animazione del filtro */
+      }
+
+      .image-section:hover img {
+        filter: brightness(
+          70%
+        ); /* oscuramento dell'immagine al passaggio del mouse */
+      }
+
+      .image-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* overlay semi-trasparente */
+        opacity: 0; /* inizialmente trasparente */
+        transition: opacity 0.3s; /* animazione dell'opacità */
+      }
+
+      .image-section:hover .image-overlay {
+        opacity: 1; /* mostrare overlay al passaggio del mouse */
+      }
+
+      .text-section {
+        display: none; /* nascondi il testo all'inizio */
+        margin-bottom: 20px;
+        color: white;
+      }
+
+      #text-container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        padding: 5px;
+        font-family: Arial, sans-serif;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="title">Harry Potter</h1>
+
+    <div class="burger-menu" onclick="toggleOverlay()">
+      <div class="burger"></div>
+      <div class="burger"></div>
+      <div class="burger"></div>
+    </div>
+
+    <!-- Aggiungi l'overlay -->
+    <div id="overlay">
+      <div class="overlay-content">
+        <a href="index.html">task1</a>
+        <a href="task2.html">task2</a>
+        <a href="task3.html">task3</a>
+      </div>
+    </div>
+
+    <main>
+      <div class="image-section" onclick="showText(1)">
+        <img src="assets/philosophers01.jpg" alt="Beep Image" />
+        <div class="image-overlay"></div>
+      </div>
+
+      <div class="image-section" onclick="showText(2)">
+        <img src="assets/philosophers09.jpg" alt="Boop Image" />
+        <div class="image-overlay"></div>
+      </div>
+
+      <div class="image-section" onclick="showText(3)">
+        <img src="assets/philosophers17.jpg" alt="Boooom Image" />
+        <div class="image-overlay"></div>
+      </div>
+
+      <div class="image-section" onclick="showText(4)">
+        <img src="assets/philosophers19.jpg" alt="The End Image" />
+        <div class="image-overlay"></div>
+      </div>
+
+      <div class="image-section" onclick="showText(5)">
+        <img src="assets/philosophers22.jpg" alt="The End Image" />
+        <div class="image-overlay"></div>
+      </div>
+
+      <div class="image-section" onclick="showText(6)">
+        <img src="assets/philosophers26.jpg" alt="The End Image" />
+        <div class="image-overlay"></div>
+      </div>
+
+      <div class="image-section" onclick="showText(7)">
+        <img src="assets/philosophers28.jpg" alt="The End Image" />
+        <div class="image-overlay"></div>
+      </div>
+
+      <div class="image-section" onclick="showText(8)">
+        <img src="assets/philosophers36.jpg" alt="The End Image" />
+        <div class="image-overlay"></div>
+      </div>
+
+      <div class="image-section" onclick="showText(9)">
+        <img src="assets/philosophers47.jpg" alt="The End Image" />
+        <div class="image-overlay"></div>
+      </div>
+
+      <div class="image-section" onclick="showText(10)">
+        <img src="assets/philosophers55.jpg" alt="The End Image" />
+        <div class="image-overlay"></div>
+      </div>
+
+      <div class="image-section" onclick="showText(11)">
+        <img src="assets/philosophers62.jpg" alt="The End Image" />
+        <div class="image-overlay"></div>
+      </div>
+
+      <div class="image-section" onclick="showText(12)">
+        <img src="assets/philosophers64.jpg" alt="The End Image" />
+        <div class="image-overlay"></div>
+      </div>
+
+      <div id="text-container"></div>
+    </main>
+
+    <script>
+      const scrollContainer = document.querySelector("main");
+
+      scrollContainer.addEventListener("wheel", (evt) => {
+        evt.preventDefault();
+        scrollContainer.scrollLeft += evt.deltaY;
+      });
+
+      function showText(imageId) {
+        var textContainer = document.getElementById("text-container");
+        var text = "";
+
+        // Associare il testo all'immagine in base all'ID dell'immagine
+        switch (imageId) {
+          case 1:
+            text =
+              "On a quiet morning in Privet Drive, where things were always neat and ordinary, a giant with a bushy beard suddenly appeared. Much to the Dursleys' surprise, this giant brought along a basket containing a baby wrapped in a blanket. That baby was Harry Potter! From that moment on, the Dursleys' lives would never be the same. Thus began Harry's extraordinary adventure into the world of magic, which started right within the walls of the Dursleys' home, proving that magic can be found anywhere, even in the most ordinary of places.";
+            break;
+          case 2:
+            text =
+              "In a cozy living room on Privet Drive, the Dursleys are enjoying their evening routine. Suddenly, a letter arrives addressed to Harry. Mr. Dursley snatches it away, but more letters flood in, each addressed to Harry. Desperate to keep Harry from reading them, the Dursleys retreat to a remote island. However, letters find Harry even there, delivered by owls, through chimneys, and even in eggs. The absurdity escalates until Hagrid, a giant with a heart of gold, barges in, delivering a life-changing message: Harry is a wizard, and his adventure in the magical world is about to begin.";
+            break;
+          case 3:
+            text = "At Platform 9¾, bustling with families and students, Harry stands bewildered with the Dursleys. With a mixture of nerves and excitement, he boards the Hogwarts Express, waving goodbye to his ordinary life. Inside, he encounters Ron Weasley, who offers him candy and friendship. As the train chugs along, Harry marvels at the passing countryside until they reach Hogsmeade Station. Amidst the magical atmosphere, Hagrid greets Harry warmly, guiding him to the next chapter of his life. With each click of the wheels, Harry's journey to Hogwarts unfolds, brimming with anticipation and the promise of extraordinary adventures.";
+            break;
+          case 4:
+            text = "Upon arrival at Hogwarts, the majestic castle stands tall against the starry sky, its turrets illuminated by the glow of torches. Harry, wide-eyed with wonder, steps off the boat and is greeted by the sight of the welcoming Great Hall, adorned with floating candles and filled with the buzz of excited chatter. Professor McGonagall leads the first-years into the hall, where the anticipation of the Sorting Ceremony hangs thick in the air. As Harry takes in the magical atmosphere, he knows that this moment marks the beginning of his extraordinary journey at Hogwarts.";
+            break;
+          case 5:
+            text = "As Harry nervously sits before the Great Hall, the Sorting Hat is placed upon his head. He feels its brim brushing against his forehead as it delves into his thoughts, pondering his destiny. The hall falls silent as the Hat announces Gryffindor, and cheers erupt from the red-clad table. With a mix of relief and excitement, Harry joins his new housemates, ready to embark on his magical journey at Hogwarts.";
+            break;
+          case 6:
+            text = "In the dimly lit dungeons of Hogwarts, Professor Snape's potions class begins. Cauldrons bubble and hiss as Snape, with his trademark sneer, prowls among the students. With precise instructions and an air of authority, he demands perfection from each potion-brewing novice. Harry, feeling the weight of Snape's intense gaze, nervously stirs his cauldron, hoping to avoid the professor's scorn. Snape's voice, sharp as a whip, echoes through the chamber as he critiques every mistake. Despite the challenges, Harry's determination grows, fueled by the desire to prove himself in the eyes of this formidable teacher and excel in the art of potion-making.";
+            break;
+          case 7:
+            text = "On the Quidditch pitch, excitement crackles in the air as students gather for their first flying lesson. Harry stands alongside his classmates, eagerly awaiting their instructor. Madame Hooch, with her stern demeanor, commands attention as she demonstrates the basics of broomstick handling. With a firm grip on his broom, Harry listens intently, absorbing every word. As the lesson progresses, nerves give way to exhilaration as Harry takes to the sky. The rush of wind against his face, the thrill of soaring higher—it's a feeling like no other. With each swoop and dive, Harry's passion for Quidditch ignites, marking the beginning of his journey to become a skilled flyer and seeker.";
+            break;
+          case 8:
+            text = "In the heart of Hogwarts, the anticipation is palpable as spectators fill the stands for the first Quidditch match of the season. Harry, now Gryffindor's seeker, feels a mix of excitement and nerves as he prepares to take to the sky. The roar of the crowd is deafening as the game begins, with bludgers whizzing past and players zooming across the pitch. Harry soars through the air, eyes fixed on the elusive golden snitch. With every twist and turn, he maneuvers skillfully, determined to catch it and secure victory for Gryffindor. As the game reaches its climax, Harry's moment of triumph approaches, propelling him into the annals of Quidditch history.";
+            break;
+          case 9:
+            text = "In the depths of the Forbidden Forest, shadows dance among the ancient trees, shrouding everything in darkness. Harry, Hermione, Ron, and Draco venture cautiously, their footsteps muffled by fallen leaves. The air is thick with tension as they navigate through the eerie silence, wary of what lurks in the shadows. Suddenly, a rustle breaks the stillness, sending shivers down their spines. With wands drawn, they press on, their hearts pounding with fear and excitement. Every snap of a twig, every whisper of wind, sends a chill down their spines as they delve deeper into the mysteries of the Forbidden Forest, unaware of the dangers lurking just beyond sight.";
+            break;
+          case 10:
+            text = "In the heart of Hogwarts, the Great Hall is transformed into a battlefield as giant chess pieces stand ready for their players. Harry, Hermione, and Ron, their faces set in determination, step forward to represent Gryffindor in this life-sized game of strategy. With each move, the pieces clash and maneuver, their massive forms looming over the students. Ron takes charge, his strategic mind guiding their every move, while Hermione offers invaluable advice. Harry, adrenaline coursing through his veins, watches the board with bated breath, knowing that their victory hinges on their ability to outwit their opponents. As the game reaches its climax, Gryffindor emerges triumphant, their unity and cunning securing their place in Hogwarts history.";
+            break;
+          case 11:
+            text = "In the heart of Hogwarts, the final confrontation unfolds amidst the chaos of battle. Harry and Voldemort stand face to face, their wands raised in a deadly dance of light and shadow. Spells fly, illuminating the darkness with bursts of color as the fate of the wizarding world hangs in the balance. Friends and foes clash around them, but Harry remains steadfast, fueled by love and courage. With each incantation, he pushes back against the darkness, determined to end Voldemort's reign of terror once and for all. As the battle rages on, Harry's strength is tested, but in the end, it is his resilience and unwavering resolve that lead to victory, vanquishing the darkness and restoring peace to Hogwarts and beyond.";
+            break;
+          case 12:
+            text = "With Voldemort defeated and peace restored to Hogwarts, Harry's journey comes full circle as he prepares to return home. Amidst the jubilant celebrations and tearful farewells, he finds himself filled with a bittersweet mix of emotions. The Hogwarts Express chugs steadily along its tracks, carrying Harry and his friends back to Platform 9¾. As the familiar sights of Privet Drive come into view, Harry reflects on the countless adventures and friendships forged during his time at Hogwarts. Stepping off the train, he embraces the future with newfound resolve, knowing that wherever life may lead him, Hogwarts will always be his home.";
+            break;
+          default:
+            text = "Testo non disponibile";
+        }
+
+        // Mostrare il testo nel contenitore dei testi
+        textContainer.innerHTML = text;
+      }
+
+      function toggleOverlay() {
+        var overlay = document.getElementById("overlay");
+        if (overlay.style.display === "block") {
+          overlay.style.display = "none";
+        } else {
+          overlay.style.display = "block";
+        }
+      }
+    </script>
+
+    <!-- <script src="./script.js"></script> -->
+  </body>
+</html>

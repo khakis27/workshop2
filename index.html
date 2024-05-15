@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sito con 4 parole nere</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+        background-color: white; /* Colore di sfondo predefinito */
+        color: black; /* Colore del testo predefinito */
+      }
+
+      #video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+  }
+
+      /* Stile per il menu burger */
+      .burger-menu {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        z-index: 9999;
+      }
+
+      .burger {
+        width: 100%;
+        height: 3px;
+        background-color: black;
+        margin: 5px 0;
+      }
+
+      /* Stile per l'overlay */
+      #overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9998;
+      }
+
+      .overlay-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+        color: white;
+      }
+
+      .overlay-content a {
+        display: block;
+        margin-bottom: 20px;
+        font-size: 20px;
+        text-decoration: none;
+        color: white;
+      }
+      .container {
+        position: relative; /* Per il posizionamento assoluto */
+        width: 100vw;
+        height: 100vh;
+        text-align: left;
+
+      }
+      .word {
+        color: black;
+        cursor: pointer;
+        text-align: justify;
+      }
+
+      .word:hover {
+        background-color: red;
+      }
+      .line {
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: black;
+        margin: auto;
+      }
+    .description {
+        display: none;
+        margin-top: 5px;
+    }
+    .image-container {
+        position: relative;
+    }
+    .image {
+        max-width: 100%;
+        height: auto;
+    }
+    .duotone-layer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(to right top, rgba(255, 0, 0, 0.5), rgba(255, 0, 0, 0.5)), linear-gradient(to bottom right, rgba(255, 0, 0, 0.5), rgba(255, 0, 0, 0.5));
+        mix-blend-mode: overlay;
+    }
+      #intro {
+        position: absolute; /* Posizionamento assoluto */
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: white; /* Colore di sfondo predefinito */
+        z-index: 2; /* Assicura che sia sovrapposto al contenuto */
+      }
+      #intro img {
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="intro">
+      <img src="assets/FOMO THE HEART OF MILAN.png" />
+    </div>
+
+    <video id="video-background" autoplay loop muted>
+        <source src="assets/TDMovieOut.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+    <div class="burger-menu" onclick="toggleOverlay()">
+      <div class="burger"></div>
+      <div class="burger"></div>
+      <div class="burger"></div>
+    </div>
+
+    <!-- Aggiungi l'overlay -->
+    <div id="overlay">
+      <div class="overlay-content">
+        <a href="task1.html">task1</a>
+        <a href="task2.html">task2</a>
+        <a href="task3.html">task3</a>
+      </div>
+    </div>
+    <div class="container">
+      <div class="word">
+        FOMO <span style="color: white;">or Fear of Missing Out, is a widespread psychological phenomenon
+        <br />
+        driven by the anxiety of missing rewarding experiences others are <br />
+        having. It's exacerbated by constant connectivity, social comparison,
+        <br />
+        and societal pressures. <br /><br /><br /></span>
+      </div>
+      <span class="line"></span>
+      <div class="word" onclick="toggleDescription('desc1')">DR. AGOSTINELLI<span style="float: right;">27/05/2000</span></div>
+      <div id="desc1" class="description">
+        <div class="image-container">
+            <div class="duotone-layer"></div>
+            <img class="image" src="assets/davide.png">
+        </div>
+        <p>I am a student in the Communication Design course at Politecnico di
+        Milano, passionate about and digitally oriented. Over the past 3 years,
+        I have developed solid skills in videomaking and programming,
+        implementing them in practical projects such as short films and web
+        apps, optimised for both mobile and desktop devices. My education has
+        provided me with a solid foundation, but it is my passion for digital
+        art, in particular computer animation and video art, that prompted me to
+        seek an internship opportunity to further explore these aspects in a
+        working context.</p>
+      </div>
+      <span class="line"></span>
+      <div class="word" onclick="toggleDescription('desc2')">DR. LEONI <span style="float: right;">6/12/2001</span></div>
+      <div id="desc2" class="description">
+        <div class="image-container">
+            <div class="duotone-layer"></div>
+            <img class="image" src="assets/vero.png">
+        </div>
+        <p>I'm Veronica, a design enthusiast who transitioned from interior design
+        to pursue my love for communication design. I define myself as always
+        trying to escape boredom. My passion lies in research, uncovering
+        connections between creativity and knowledge. Over time, I've honed
+        skills in graphic design and visual communication. In my leisure, I
+        engage painting and drawing, finding inspiration beyond my professional
+        pursuits.</p>
+      </div>
+      <span class="line"></span>
+      <div class="word" onclick="toggleDescription('desc3')">DR. MONTI <span style="float: right;">27/05/2000</span></div>
+      <div id="desc3" class="description">
+        <div class="image-container">
+            <div class="duotone-layer"></div>
+            <img class="image" src="assets/dave.png">
+        </div>
+        <p>Interior + graphic designer, my main visual references come from comics,
+        graffiti, music, skateboarding and video games, fantasy and historical
+        books, nature. I am very flexible and perform well under pressure having
+        worked in the fashion system as a print designer. I love making posters
+        and I hate fascism :)</p>
+      </div>
+      <span class="line"></span>
+      <div class="word" onclick="toggleDescription('desc4')">DR. FALCINI <span style="float: right;">12/10/2000</span></div>
+      <div id="desc4" class="description">
+        <div class="image-container">
+            <div class="duotone-layer"></div>
+            <img class="image" src="assets/andre.png">
+        </div>
+       <p> Hello! I'm Andrea. I have a bachelor degree in Communication Design from
+        the University “Politecnico di Milano “, where I have spent my last
+        three years of study, developing skills in both graphic design and
+        strategic thinking. I have a strong passion for graphic branding and
+        identity. I am enthusiastic about fashion photography and captivated by
+        the world of printing processes and ink. Despite my career interests,
+        I’m also a compulsive purchaser of Design books.</p>
+      </div>
+      <span class="line"></span>
+    </div>
+
+    <script>
+      // Cambio di sfondo dell'introduzione
+      var intro = document.getElementById("intro");
+      var colors = ["white", "red"];
+      var currentColorIndex = 0;
+
+      function changeBackground() {
+        intro.style.backgroundColor = colors[currentColorIndex];
+        currentColorIndex = (currentColorIndex + 1) % colors.length;
+      }
+
+      setInterval(changeBackground, 200); // Cambia il colore ogni secondo
+
+      // Gestione della visualizzazione delle descrizioni
+      function toggleDescription(id) {
+        var description = document.getElementById(id);
+        var images = description.getElementsByClassName("image");
+        for (var i = 0; i < images.length; i++) {
+            var image = images[i];
+            if (image.style.display === "none") {
+                image.style.display = "block";
+            } else {
+                image.style.display = "none";
+            }
+        }
+        if (description.style.display === "none") {
+            description.style.display = "block";
+        } else {
+            description.style.display = "none";
+        }
+    }
+
+      // Nascondi l'intro dopo 5 secondi
+      setTimeout(function () {
+        intro.style.display = "none";
+      }, 3000);
+
+      function toggleOverlay() {
+  var overlay = document.getElementById('overlay');
+  if (overlay.style.display === 'block') {
+    overlay.style.display = 'none';
+  } else {
+    overlay.style.display = 'block';
+  }
+}
+    </script>
+  </body>
+</html>
